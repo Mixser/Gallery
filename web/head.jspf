@@ -1,0 +1,51 @@
+     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<fmt:bundle basename="${locale}">
+
+    <div class="navbar-wrapper">
+      <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
+      <div class="container">
+
+        <div class="navbar navbar-inverse">
+          <div class="navbar-inner">
+            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">Gallery by mixser.by</a>
+            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
+            <div class="nav-collapse collapse">
+              <ul class="nav">
+                  <li class="active"><a href="/home"><fmt:message key="navbar.home"/></a></li>
+                <li><a href="/picture/edit"><fmt:message key="navbar.uploadNew"/></a></li>
+                <li><a href="/picture/list"><fmt:message key="navbar.allPictures"/></a></li>
+                <c:choose>
+                    <c:when test="${empty user_id}">
+                        <li><a href="/login"><fmt:message key="navbar.signin"/></a></li>
+                    </c:when>
+                    <c:otherwise>
+                            <li><a href="/logout"><fmt:message key="navbar.signout"/></a></li>
+                    </c:otherwise>
+                </c:choose>
+                <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="navbar.about"/><b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Help</a></li>
+                    <li class="divider"></li>
+                    <li class="nav-header">About us</li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </li></ul><ul class="nav pull-right">
+                <li> <a href="/change_locale/?lang=${locale}">En/Rus</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div><!-- /.navbar-inner -->
+        </div><!-- /.navbar -->
+
+      </div> <!-- /.container -->
+    </div><!-- /.navbar-wrapper -->
+
+</fmt:bundle>
